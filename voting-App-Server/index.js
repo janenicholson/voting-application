@@ -107,7 +107,9 @@ const cors = require('cors');
             });
 
             // Respond with success
-            const votingUrl = `http://localhost:3001/vote/${result.rows[0].id}`;
+            const host = req.get('host') || 'localhost';
+            const protocol = req.get('x-forwarded-proto') || 'http';
+            const votingUrl = `${protocol}://${host}/vote/${result.rows[0].id}`;
             res.status(201).json({ message: 'Topic created successfully!', votingUrl });
         } catch (err) {
             // Handle errors during topic creation
