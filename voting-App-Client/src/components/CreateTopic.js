@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion'; // Importing Framer Motion
+import { API_URL } from '../config';
 
 const CreateTopic = () => {
     const [topic, setTopic] = useState('');
@@ -18,7 +19,7 @@ const CreateTopic = () => {
     const createTopic = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/api/topics`, { topic, description });
+            const response = await axios.post(`${API_URL}/topics`, { topic, description });
             setVotingUrl(response.data.votingUrl);
             setMessage('Topic created! Copy the voting link below.');
         } catch (error) {

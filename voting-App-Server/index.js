@@ -485,8 +485,8 @@ const cors = require('cors');
         });
     };
     
-    // Ensure the server listens on port 5000 (as per your `app.listen` call)
-    app.listen(5000, () =>
+    // Ensure the server listens on port 5000 on all interfaces
+    app.listen(5000, '0.0.0.0', () =>
         logEntry({
             level: 'info',
             namespace: process.env.NAMESPACE,
