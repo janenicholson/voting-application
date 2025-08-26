@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CreateTopic from './components/CreateTopic';
 import Vote from './components/Vote';
 import Results from './components/Results';
-import TestRoute from './components/TestRoute';
+import HealthCheck from './components/HealthCheck';
 import {API_URL} from './config';
 
 console.log('Config:', API_URL);
@@ -19,8 +19,8 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<CreateTopic />} />
                     <Route path="/vote/:topic" element={<Vote />} />
-                    <Route path="/test/:topic" element={<TestRoute />} />
                     <Route path="/results/:topic" element={<Results />} />
+                    <Route path="/health" element={<HealthCheck />} />
                 </Routes>
             </div>
         </Router>
