@@ -12,8 +12,9 @@ const CreateTopic = () => {
     const [votingUrl, setVotingUrl] = useState('');
     const navigate = useNavigate();
 
-    const apiUrl = process.env.REACT_APP_URL;
-    console.log('API URL:', apiUrl);
+    console.log('Current location:', window.location.href);
+    console.log('API URL being used:', API_URL);
+    console.log('Environment REACT_APP_URL:', process.env.REACT_APP_URL);
 
 
     const createTopic = async (e) => {
