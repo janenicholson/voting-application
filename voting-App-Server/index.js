@@ -108,8 +108,14 @@ const cors = require('cors');
 
             // Respond with success
             const host = req.get('host') || 'localhost';
-            const protocol = req.get('x-forwarded-proto') || 'http';
+            // Force HTTP protocol for now since we're not using HTTPS
+            const protocol = 'http';
             const votingUrl = `${protocol}://${host}/vote/${result.rows[0].id}`;
+            
+            console.log('Generated voting URL:', votingUrl);
+            console.log('Host header:', req.get('host'));
+            console.log('Forced protocol:', protocol);
+            
             res.status(201).json({ message: 'Topic created successfully!', votingUrl });
         } catch (err) {
             // Handle errors during topic creation
