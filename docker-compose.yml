@@ -79,6 +79,19 @@ services:
     ]
     networks:
       - voting-app-network
+  
+  loki:
+    image: grafana/loki:3.5.4
+    container_name: loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/local-config.yaml
+    command: ["--pattern-ingester.enabled=true", "-config.file=/etc/loki/local-config.yaml "]
+    networks:
+      - voting-app-network
+
+
 
 networks:
   voting-app-network:
