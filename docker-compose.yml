@@ -1,4 +1,3 @@
-version: '3'
 
 services:
   # A postgres DB used to store data by the API server microservice.
@@ -67,6 +66,8 @@ services:
 networks:
   voting-app-network:
     driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
 
 volumes:
   postgres:
