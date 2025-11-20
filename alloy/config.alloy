@@ -67,6 +67,15 @@ prometheus.scrape "unix" {
     job_name = "node_exporter"
 }
 
+prometheus.exporter.postgres "postgres" {
+    data_source_names = ["postgresql://postgres:postgres@voting-app-database:5432/postgres?sslmode=disable"]
+}
+
+prometheus.scrape "postgres" {
+    targets = prometheus.exporter.postgres.postgres.targets
+    forward_to = [prometheus.remote_write.mimir.receiver]
+    job_name = "postgress_exporter"
+}
 
 prometheus.scrape "influxdb_exporter" {
   targets = [
